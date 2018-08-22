@@ -1,0 +1,54 @@
+<div class="row">
+  <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
+    <h1 class="headingg">Register</h1>
+    <form class="registerForm" #f="ngForm" (ngSubmit)="register(f)">
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input
+          required
+          type="email"
+          id="email"
+          placeholder="Email"
+          name="email"
+          ngModel
+          class="form-control">
+      </div>
+      <div class="form-group">
+        <label for="email">Username</label>
+        <input
+          required
+          type="text"
+          placeholder="Username"
+          id="username"
+          name="username"
+          ngModel
+          class="form-control">
+      </div>
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input
+          required
+          type="password"
+          placeholder="Password"
+          id="password"
+          name="password"
+          ngModel
+          class="form-control">
+      </div>
+      <div class="form-group">
+        <label for="password">Repeat Password</label>
+        <input
+          required
+          type="password"
+          placeholder="Repeat Password"
+          id="repeatPassword"
+          name="repeatPassword"
+          ngModel
+          class="form-control">
+      </div>
+      <button class="btn btn-primary" [disabled]="f.invalid" type="submit">Sign Up</button>
+    </form>
+    <span>Already have account?  </span>
+    <span><a routerLink="/login">Log In</a></span>
+  </div>
+</div>
