@@ -11,6 +11,7 @@ import {AuthService} from '../services/auth-service/auth.service';
 })
 export class ExerciseDetailsComponent implements OnInit {
 
+  id = this.route.snapshot.params['id'];
   exercise: Object;
   isCreator: boolean;
   constructor(private router: Router,
@@ -20,10 +21,8 @@ export class ExerciseDetailsComponent implements OnInit {
               private authService: AuthService) { }
 
   ngOnInit() {
-    const id = this.route.snapshot.params['id'];
 
-
-    this.exerciseService.getExerciseDetails(id).subscribe(data => {
+    this.exerciseService.getExerciseDetails(this.id).subscribe(data => {
       this.exercise = data;
         this.isCreator = localStorage.getItem('username') === data.creatorName;
       },
@@ -33,7 +32,7 @@ export class ExerciseDetailsComponent implements OnInit {
   }
 
   delete() {
-    this.exerciseService.deleteExercise(this.exercise._id).subscribe(data => {
+    this.exerciseService.deleteExercise(this.id).subscribe(data => {
       this.toastr.success('Successfully deleted an exercise');
       this.router.navigate(['/exercises/catalog']);
     },

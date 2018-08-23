@@ -8,6 +8,7 @@ import {CatalogComponent} from './components/catalog/catalog.component';
 import {AddExerciseComponent} from './components/add-exercise/add-exercise.component';
 import {ExerciseEditComponent} from './exercise-edit/exercise-edit.component';
 import {ExerciseDetailsComponent} from './exercise-details/exercise-details.component';
+import {MyExercisesCatalogComponent} from './components/my-exercises-catalog/my-exercises-catalog.component';
 
 const routes: Route[] = [
   {path: '', redirectTo: '/login', pathMatch: 'full'},
@@ -17,6 +18,7 @@ const routes: Route[] = [
   {path: 'exercises/add', component: AddExerciseComponent, canActivate: [AuthGuard]},
   {path: 'exercises/edit/:id', component: ExerciseEditComponent, canActivate: [AuthGuard]},
   {path: 'exercises/details/:id', component: ExerciseDetailsComponent, canActivate: [AuthGuard]},
+  {path: 'exercises/mine', component: MyExercisesCatalogComponent, canActivate: [AuthGuard]},
 ];
 
 @NgModule({

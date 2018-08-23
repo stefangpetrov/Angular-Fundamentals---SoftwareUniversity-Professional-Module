@@ -14,6 +14,7 @@ import { CatalogComponent } from './components/catalog/catalog.component';
 import { AddExerciseComponent } from './components/add-exercise/add-exercise.component';
 import { ExerciseDetailsComponent } from './exercise-details/exercise-details.component';
 import { ExerciseEditComponent } from './exercise-edit/exercise-edit.component';
+import { MyExercisesCatalogComponent } from './components/my-exercises-catalog/my-exercises-catalog.component';
 
 
 @NgModule({
@@ -26,6 +27,7 @@ import { ExerciseEditComponent } from './exercise-edit/exercise-edit.component';
     AddExerciseComponent,
     ExerciseDetailsComponent,
     ExerciseEditComponent,
+    MyExercisesCatalogComponent,
   ],
   imports: [
     BrowserModule,
