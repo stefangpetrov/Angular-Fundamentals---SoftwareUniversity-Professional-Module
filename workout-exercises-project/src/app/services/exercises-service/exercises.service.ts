@@ -46,8 +46,8 @@ export class ExercisesService {
   }
 
   deleteExercise(id): Observable<any> {
-    return this.http.post(`https://baas.kinvey.com/appdata/${APP_KEY}/exercises/${id}`, {
-      headers: new HttpHeaders().set('Authorization', 'Kinvey' + `${this.authService.getAuthToken()}`)
+    return this.http.delete(`https://baas.kinvey.com/appdata/${APP_KEY}/exercises/${id}`, {
+      headers: new HttpHeaders().set('Authorization', 'Kinvey ' + `${this.authService.getAuthToken()}`)
         .set('Content-Type', 'application/json')
     });
   }

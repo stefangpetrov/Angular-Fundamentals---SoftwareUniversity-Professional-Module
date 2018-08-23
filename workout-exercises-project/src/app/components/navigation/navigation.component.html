@@ -18,14 +18,8 @@
       <li *ngIf="authService.isAuthenticated()" class="nav-item">
         <a class="nav-link" (click)="logout()">Logout</a>
       </li>
-      <li (click)="expand()" *ngIf="authService.isAuthenticated()" [class]="dropdownLi">
-        <a class="nav-link dropdown-toggle" id="dropdown01" data-toggle="dropdown"
-           aria-haspopup="true" aria-expanded="false">Exercises</a>
-        <div [class]="dropdownMenu" aria-labelledby="dropdown01">
-          <a class="dropdown-item" routerLink="/exercises/catalog">Catalog</a>
-          <a class="dropdown-item" routerLink="/exercises/add">Create</a>
-          <a class="dropdown-item" routerLink="/exercises/mine">MyExercises</a>
-        </div>
+      <li *ngIf="authService.isAuthenticated()" class="nav-item">
+        <a class="nav-link" routerLink="/exercises/catalog">Catalog</a>
       </li>
       <li *ngIf="authService.isAdmin()" class="nav-item">
         <a class="nav-link" routerLink="/admin/panel">AdminPanel</a>

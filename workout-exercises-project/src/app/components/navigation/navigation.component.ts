@@ -25,6 +25,7 @@ export class NavigationComponent implements OnInit {
 
 
   expand() {
+    console.log('vleznah')
     this.dropdownLi.endsWith('show')
       ? this.dropdownLi = 'nav-item dropdown'
       : this.dropdownLi = 'nav-item dropdown show';

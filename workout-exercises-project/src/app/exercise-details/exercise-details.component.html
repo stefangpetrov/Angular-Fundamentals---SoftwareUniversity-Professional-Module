@@ -1,3 +1,33 @@
-<p>
-  exercise-details works!
-</p>
+<div *ngIf="exercise">
+  <div  class="row">
+    <div class="col-xs-12">
+      <img
+        src="{{exercise.imageUrl}}"
+        alt="{{exercise.name}}"
+        class="img-responsive"
+        style="max-height: 300px;">
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-12">
+      <h1>{{exercise.name}}</h1>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-12">
+      <h3>Creator's name: {{exercise.creatorName}}</h3>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-12">
+      <h3>Exercise description:</h3>
+      <p>{{exercise.description}}</p>
+    </div>
+  </div>
+  <div *ngIf="authService.isAdmin() || isCreator" class="row">
+    <div class="col-xs-12">
+      <button type="button" class="btn btn-warning" routerLink="/exercises/edit/{{exercise._id}}">Edit Exercise</button>
+      <button type="button" class="btn btn-danger" (click)="delete()">Delete Exercise</button>
+    </div>
+  </div>
+</div>
