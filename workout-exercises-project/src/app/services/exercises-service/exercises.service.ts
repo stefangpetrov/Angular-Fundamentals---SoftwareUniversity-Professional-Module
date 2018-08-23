@@ -19,34 +19,34 @@ export class ExercisesService {
   }
   getAllExercises(): Observable<any> {
     return this.http.get(`https://baas.kinvey.com/appdata/${APP_KEY}/exercises`, {
-      headers: new HttpHeaders().set('Authorization', 'Kinvey' + `${this.authService.getAuthToken()}`)
+      headers: new HttpHeaders().set('Authorization', 'Kinvey ' + `${this.authService.getAuthToken()}`)
       .set('Content-Type', 'application/json')
     });
   }
 
   getExerciseDetails(id): Observable<any> {
     return this.http.get(`https://baas.kinvey.com/appdata/${APP_KEY}/exercises/${id}`, {
-      headers: new HttpHeaders().set('Authorization', 'Kinvey' + `${this.authService.getAuthToken()}`)
+      headers: new HttpHeaders().set('Authorization', 'Kinvey ' + `${this.authService.getAuthToken()}`)
         .set('Content-Type', 'application/json')
     });
   }
 
   addExercise(obj): Observable<any> {
     return this.http.post(`https://baas.kinvey.com/appdata/${APP_KEY}/exercises`, JSON.stringify(obj), {
-      headers: new HttpHeaders().set('Authorization', 'Kinvey' + `${this.authService.getAuthToken()}`)
+      headers: new HttpHeaders().set('Authorization', 'Kinvey ' + `${this.authService.getAuthToken()}`)
         .set('Content-Type', 'application/json')
     });
   }
 
   editExercise(id, obj): Observable<any> {
     return this.http.put(`https://baas.kinvey.com/appdata/${APP_KEY}/exercises/${id}`, JSON.stringify(obj), {
-      headers: new HttpHeaders().set('Authorization', 'Kinvey' + `${this.authService.getAuthToken()}`)
+      headers: new HttpHeaders().set('Authorization', 'Kinvey ' + `${this.authService.getAuthToken()}`)
         .set('Content-Type', 'application/json')
     });
   }
 
   deleteExercise(id): Observable<any> {
-    return this.http.put(`https://baas.kinvey.com/appdata/${APP_KEY}/exercises/${id}`, {
+    return this.http.post(`https://baas.kinvey.com/appdata/${APP_KEY}/exercises/${id}`, {
       headers: new HttpHeaders().set('Authorization', 'Kinvey' + `${this.authService.getAuthToken()}`)
         .set('Content-Type', 'application/json')
     });

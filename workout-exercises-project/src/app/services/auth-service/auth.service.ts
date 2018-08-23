@@ -2,7 +2,6 @@ import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import { Router } from '@angular/router';
-import {a} from '@angular/core/src/render3';
 
 const APP_KEY = 'kid_ryB1mBK87';
 const APP_SECRET = '990eb8b393524956b719096e77edbd0e';

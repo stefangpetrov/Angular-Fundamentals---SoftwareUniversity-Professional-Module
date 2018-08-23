@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import {ExercisesService} from '../../services/exercises-service/exercises.service';
+import {Router} from '@angular/router';
+import {ToastrService} from 'ngx-toastr';
 
 @Component({
   selector: 'app-catalog',
@@ -6,10 +9,50 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./catalog.component.css']
 })
 export class CatalogComponent implements OnInit {
+  exercises: Array<object>;
 
-  constructor() { }
+  constructor(private exerciseService: ExercisesService,
+              private router: Router,
+              private toastr: ToastrService) { }
 
   ngOnInit() {
+
+    this.exerciseService.getAllExercises().subscribe(data => {
+
+      this.exercises = data.sort((a, b) => a._kmd.lmt <= b._kmd.lmt);
+    },
+      err => {
+
+        this.toastr.error((err.error.description ? err.error.description : 'Unknown error occured. Please try again'));
+      });
+
   }
 
+  onMuscleChanged(muscleGroup) {
+    this.exerciseService.getAllExercises().subscribe(data => {
+        if (muscleGroup !== '') {
+          this.exercises = data.sort((a, b) => a._kmd.lmt <= b._kmd.lmt).filter((m) => m.muscleGroup === muscleGroup);
+        } else {
+          this.exercises = data.sort((a, b) => a._kmd.lmt <= b._kmd.lmt);
+        }
+
+      },
+      err => {
+        console.log(err);
+        this.toastr.error((err.error.description ? err.error.description : 'Unknown error occured. Please try again'));
+      });
+  }
+
+  search(query) {
+    const value = query['searched'];
+    this.exerciseService.getAllExercises().subscribe(data => {
+
+      console.log('vleznah');
+        this.exercises = data.sort((a, b) => a._kmd.lmt <= b._kmd.lmt).filter((e) => e.name.includes(value));
+      },
+      err => {
+
+        this.toastr.error((err.error.description ? err.error.description : 'Unknown error occured. Please try again'));
+      });
+  }
 }
