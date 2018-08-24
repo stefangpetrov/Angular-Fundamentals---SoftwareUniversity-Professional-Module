@@ -14,9 +14,11 @@ import {AdminPanelComponent} from './components/admin-panel/admin-panel.componen
 import {AdminGuard} from './guards/admin-guard/admin.guard';
 import {AdminUserDeleteComponent} from './components/admin-user-delete/admin-user-delete.component';
 import {AdminUserEditComponent} from './components/admin-user-edit/admin-user-edit.component';
+import {AboutComponent} from './components/about/about.component';
 
 const routes: Route[] = [
   {path: '', redirectTo: '/login', pathMatch: 'full'},
+  {path: 'about', component: AboutComponent},
   {path: 'login', component: LoginComponent},
   {path: 'register', component: RegisterComponent},
   {path: 'exercises/catalog', component: CatalogComponent, canActivate: [AuthGuard]},

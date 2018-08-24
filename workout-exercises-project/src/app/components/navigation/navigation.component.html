@@ -19,13 +19,16 @@
         <a class="nav-link" (click)="logout()">Logout</a>
       </li>
       <li *ngIf="authService.isAuthenticated()" class="nav-item">
-        <a class="nav-link" routerLink="/exercises/catalog">Catalog</a>
+        <a class="nav-link" routerLink="/exercises/catalog">Exercise List</a>
       </li>
       <li *ngIf="authService.isAuthenticated()" class="nav-item">
         <a class="nav-link" routerLink="/exercises/mine">My Exercises</a>
       </li>
       <li *ngIf="authService.isAdmin()" class="nav-item">
         <a class="nav-link" routerLink="/admin/panel">AdminPanel</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/about">About</a>
       </li>
     </ul>
 

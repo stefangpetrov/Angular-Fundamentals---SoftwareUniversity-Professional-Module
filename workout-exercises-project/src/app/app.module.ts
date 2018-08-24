@@ -19,6 +19,7 @@ import { NotFoundComponent } from './components/not-found/not-found.component';
 import { AdminPanelComponent } from './components/admin-panel/admin-panel.component';
 import { AdminUserEditComponent } from './components/admin-user-edit/admin-user-edit.component';
 import { AdminUserDeleteComponent } from './components/admin-user-delete/admin-user-delete.component';
+import { AboutComponent } from './components/about/about.component';
 
 
 @NgModule({
@@ -36,6 +37,7 @@ import { AdminUserDeleteComponent } from './components/admin-user-delete/admin-u
     AdminPanelComponent,
     AdminUserEditComponent,
     AdminUserDeleteComponent,
+    AboutComponent,
   ],
   imports: [
     BrowserModule,

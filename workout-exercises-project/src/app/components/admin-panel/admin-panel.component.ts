@@ -18,7 +18,7 @@ export class AdminPanelComponent implements OnInit {
               private authService: AuthService) { }
 
   ngOnInit() {
-    console.log(this.adminService)
+
     this.adminService.getAllUsers().subscribe(data => {
       data = data.filter(u => u.username !== localStorage.getItem('username'));
       this.users = data;
