@@ -12,9 +12,13 @@ import { RegisterComponent } from './components/register/register.component';
 import {AppRoutingModule} from './app-routing.module';
 import { CatalogComponent } from './components/catalog/catalog.component';
 import { AddExerciseComponent } from './components/add-exercise/add-exercise.component';
-import { ExerciseDetailsComponent } from './exercise-details/exercise-details.component';
-import { ExerciseEditComponent } from './exercise-edit/exercise-edit.component';
+import { ExerciseDetailsComponent } from './components/exercise-details/exercise-details.component';
+import { ExerciseEditComponent } from './components/exercise-edit/exercise-edit.component';
 import { MyExercisesCatalogComponent } from './components/my-exercises-catalog/my-exercises-catalog.component';
+import { NotFoundComponent } from './components/not-found/not-found.component';
+import { AdminPanelComponent } from './components/admin-panel/admin-panel.component';
+import { AdminUserEditComponent } from './components/admin-user-edit/admin-user-edit.component';
+import { AdminUserDeleteComponent } from './components/admin-user-delete/admin-user-delete.component';
 
 
 @NgModule({
@@ -28,6 +32,10 @@ import { MyExercisesCatalogComponent } from './components/my-exercises-catalog/m
     ExerciseDetailsComponent,
     ExerciseEditComponent,
     MyExercisesCatalogComponent,
+    NotFoundComponent,
+    AdminPanelComponent,
+    AdminUserEditComponent,
+    AdminUserDeleteComponent,
   ],
   imports: [
     BrowserModule,

@@ -12,7 +12,7 @@ import { AuthService } from '../../services/auth-service/auth.service';
 @Injectable({
   providedIn: 'root'
 })
-export class AuthGuard implements CanActivate {
+export class AdminGuard implements CanActivate {
   constructor(
     private authService: AuthService,
     private router: Router,
@@ -30,7 +30,7 @@ export class AuthGuard implements CanActivate {
     if (this.authService.isAdmin()) {
       return true;
     }
-
+    this.router.navigate(['/exercises/catalog']);
     this.toastr.error('You need to be an admin in order to reach this page');
     return false;
   }

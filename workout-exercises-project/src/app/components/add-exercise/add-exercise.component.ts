@@ -33,7 +33,7 @@ export class AddExerciseComponent implements OnInit {
 
     this.exerciseService.addExercise(obj).subscribe(data => {
       this.toastr.success('Successfully created an exercise');
-      this.router.navigate(['/exercises/catalog']);
+      this.router.navigate(['/exercises/mine']);
     },
       err => {
         this.toastr.error((err.error.description ? err.error.description : 'Unknown error occured. Please try again'));
