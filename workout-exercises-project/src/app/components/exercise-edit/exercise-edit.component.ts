@@ -12,6 +12,7 @@ import {AuthService} from '../../services/auth-service/auth.service';
 export class ExerciseEditComponent implements OnInit {
 
   id = this.route.snapshot.params['id'];
+  exercise;
   name: string;
   muscleGroup: string;
   imageUrl: string;
@@ -26,11 +27,7 @@ export class ExerciseEditComponent implements OnInit {
   ngOnInit() {
 
     this.exerciseService.getExerciseDetails(this.id).subscribe(data => {
-        this.name = data.name;
-        this.muscleGroup = data.muscleGroup;
-        this.imageUrl = data.imageUrl;
-        this.description = data.description;
-        this.creatorName = data.creatorName;
+        this.exercise = data;
 
       },
       err => {
@@ -39,14 +36,7 @@ export class ExerciseEditComponent implements OnInit {
   }
 
   edit() {
-    const obj = {
-      name: this.name,
-      muscleGroup: this.muscleGroup,
-      imageUrl: this.imageUrl,
-      description: this.description,
-      creatorName: this.creatorName
-    };
-    this.exerciseService.editExercise(this.id, obj).subscribe(data => {
+    this.exerciseService.editExercise(this.id, this.exercise).subscribe(data => {
       this.toastr.success('Successfully edited the exercise');
       this.router.navigate(['/exercises/catalog']);
     },
