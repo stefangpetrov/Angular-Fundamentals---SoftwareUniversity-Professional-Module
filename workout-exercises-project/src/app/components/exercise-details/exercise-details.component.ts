@@ -33,12 +33,25 @@ export class ExerciseDetailsComponent implements OnInit {
 
   delete() {
     this.exerciseService.deleteExercise(this.id).subscribe(data => {
-      this.toastr.success('Successfully deleted an exercise');
-      this.router.navigate(['/exercises/catalog']);
-    },
+        this.toastr.success('Successfully deleted an exercise');
+        this.router.navigate(['/exercises/catalog']);
+        this.authService.getAllUsers().subscribe(users => {
+            const user = users.filter(u => u.username === localStorage.getItem('username'))[0];
+            const exercises = user.exercises;
+            exercises.splice(exercises.indexOf(this.id, 1));
+            user.exercises = exercises;
+            this.authService.editUser(user._id, user).subscribe(userr => {
+              },
+              err => {
+                this.toastr.error((err.error.description ? err.error.description : 'Unknown error occured. Please try again'));
+              });
+          },
+          err => {
+            this.toastr.error((err.error.description ? err.error.description : 'Unknown error occured. Please try again'));
+          });
+      },
       err => {
         this.toastr.error((err.error.description ? err.error.description : 'Unknown error occured. Please try again'));
       });
   }
-
 }

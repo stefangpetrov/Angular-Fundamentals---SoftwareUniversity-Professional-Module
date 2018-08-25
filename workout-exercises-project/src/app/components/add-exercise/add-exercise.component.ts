@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {ExercisesService} from '../../services/exercises-service/exercises.service';
 import {Router} from '@angular/router';
 import {ToastrService} from 'ngx-toastr';
+import {AuthService} from '../../services/auth-service/auth.service';
 
 @Component({
   selector: 'app-add-exercise',
@@ -17,7 +18,8 @@ export class AddExerciseComponent implements OnInit {
   creatorName = localStorage.getItem('username');
   constructor( private exerciseService: ExercisesService,
                private router: Router,
-               private toastr: ToastrService) { }
+               private toastr: ToastrService,
+               private authService: AuthService) { }
 
   ngOnInit() {
   }
@@ -33,6 +35,19 @@ export class AddExerciseComponent implements OnInit {
 
     this.exerciseService.addExercise(obj).subscribe(data => {
       this.toastr.success('Successfully created an exercise');
+      this.authService.getAllUsers().subscribe(users => {
+        const user = users.filter(u => u.username === localStorage.getItem('username'))[0];
+        const exercises = user.exercises;
+        exercises.push(data._id);
+        user.exercises = exercises;
+        console.log(exercises)
+        this.authService.editUser(user._id, user).subscribe(userr => {
+          },
+          err => {
+            this.toastr.error((err.error.description ? err.error.description : 'Unknown error occured. Please try again'));
+          });
+
+      });
       this.router.navigate(['/exercises/mine']);
     },
       err => {

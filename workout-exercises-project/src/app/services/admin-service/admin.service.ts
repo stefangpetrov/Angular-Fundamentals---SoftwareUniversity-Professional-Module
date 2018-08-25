@@ -4,8 +4,8 @@ import {Router} from '@angular/router';
 import {AuthService} from '../auth-service/auth.service';
 import {Observable} from 'rxjs';
 
-const APP_KEY = 'kid_ryB1mBK87';
-const APP_SECRET = '990eb8b393524956b719096e77edbd0e';
+const APP_KEY = 'kid_H1YewYR8X';
+const APP_SECRET = '0f9fd80ce27046dbbaed8b7b9c7fd683';
 @Injectable({
   providedIn: 'root'
 })

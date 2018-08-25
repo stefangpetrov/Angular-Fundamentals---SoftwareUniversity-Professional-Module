@@ -3,8 +3,8 @@ import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import { Router } from '@angular/router';
 
-const APP_KEY = 'kid_ryB1mBK87';
-const APP_SECRET = '990eb8b393524956b719096e77edbd0e';
+const APP_KEY = 'kid_H1YewYR8X';
+const APP_SECRET = '0f9fd80ce27046dbbaed8b7b9c7fd683';
 
 @Injectable({
   providedIn: 'root'
@@ -64,9 +64,16 @@ export class AuthService {
     });
   }
 
-  getCurrentUser(userId, authtoken): Observable<any> {
-    return this.http.get(`https://baas.kinvey.com/user/${APP_KEY}/` + userId, {
-      headers: new HttpHeaders().set('Authorization', 'Kinvey ' + authtoken)
+  getAllUsers(): Observable<any> {
+    return this.http.get(`https://baas.kinvey.com/user/${APP_KEY}`, {
+      headers: new HttpHeaders().set('Authorization', 'Kinvey ' + `${this.getAuthToken()}`)
+        .set('Content-Type', 'application/json')
+    });
+  }
+
+  editUser(id, obj): Observable<any> {
+    return this.http.put(`https://baas.kinvey.com/user/${APP_KEY}/${id}`, JSON.stringify(obj), {
+      headers: new HttpHeaders().set('Authorization', 'Kinvey ' + `${this.getAuthToken()}`)
         .set('Content-Type', 'application/json')
     });
   }

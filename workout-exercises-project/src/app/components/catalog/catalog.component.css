@@ -1,7 +1,9 @@
 .form-group{
   margin-left: 2.5em
 }
-
+.col-xs-12{
+  display: block;
+}
 .list-group-item{
   padding-left: 10px;
   margin-left: 1em;
