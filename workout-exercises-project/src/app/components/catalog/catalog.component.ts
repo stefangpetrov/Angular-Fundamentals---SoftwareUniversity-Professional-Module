@@ -10,6 +10,7 @@ import {ToastrService} from 'ngx-toastr';
 })
 export class CatalogComponent implements OnInit {
   exercises: Array<object>;
+  muscleGroup;
 
   constructor(private exerciseService: ExercisesService,
               private router: Router,
@@ -28,10 +29,12 @@ export class CatalogComponent implements OnInit {
 
   }
 
-  onMuscleChanged(muscleGroup) {
+  onMuscleChanged() {
     this.exerciseService.getAllExercises().subscribe(data => {
-        if (muscleGroup !== '') {
-          this.exercises = data.sort((a, b) => a._kmd.lmt <= b._kmd.lmt).filter((m) => m.muscleGroup === muscleGroup);
+      console.log('vlqzoh');
+      console.log(this.muscleGroup)
+        if (this.muscleGroup !== 'All') {
+          this.exercises = data.sort((a, b) => a._kmd.lmt <= b._kmd.lmt).filter((m) => m.muscleGroup === this.muscleGroup);
         } else {
           this.exercises = data.sort((a, b) => a._kmd.lmt <= b._kmd.lmt);
         }
@@ -47,8 +50,13 @@ export class CatalogComponent implements OnInit {
     const value = query['searched'];
     this.exerciseService.getAllExercises().subscribe(data => {
 
-      console.log('vleznah');
-        this.exercises = data.sort((a, b) => a._kmd.lmt <= b._kmd.lmt).filter((e) => e.name.includes(value));
+        if (this.muscleGroup === 'All') {
+          this.exercises = data.sort((a, b) => a._kmd.lmt <= b._kmd.lmt).filter((e) => e.name.includes(value));
+        } else {
+          this.exercises = data.sort((a, b) => a._kmd.lmt <= b._kmd.lmt)
+            .filter(e => e.muscleGroup === this.muscleGroup)
+            .filter((e) => e.name.includes(value));
+        }
       },
       err => {
 

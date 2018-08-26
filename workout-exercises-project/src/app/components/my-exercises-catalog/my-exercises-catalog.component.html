@@ -6,21 +6,24 @@
   </form>
 
   <div class="form-group">
-    <select class="custom-select">
+    <select class="custom-select"
+            id="muscleGroup"
+            name="muscleGroup"
+            [(ngModel)]="muscleGroup" (change)="onMuscleChanged()">
       <option selected="">Choose a muscle group</option>
-      <option value="1" (click)="onMuscleChanged('Chest')">Chest</option>
-      <option value="2" (click)="onMuscleChanged('Back')">Back</option>
-      <option value="3" (click)="onMuscleChanged('Legs')">Legs</option>
-      <option value="4" (click)="onMuscleChanged('Shoulders')">Shoulders</option>
-      <option value="5" (click)="onMuscleChanged('Arms')">Arms</option>
-      <option value="6" (click)="onMuscleChanged('')">All</option>
+      <option value="Chest" >Chest</option>
+      <option value="Back" >Back</option>
+      <option value="Legs" >Legs</option>
+      <option value="Shoulders" >Shoulders</option>
+      <option value="Arms" >Arms</option>
+      <option value="All" >All</option>
     </select>
   </div>
-
   <div class="form-group">
     <button type="button" class="btn btn-primary" routerLink="/exercises/add">Create an exercise</button>
   </div>
 </form>
+
 <hr>
 <div class="row">
   <div *ngFor="let exercise of exercises" class="col-xs-12">

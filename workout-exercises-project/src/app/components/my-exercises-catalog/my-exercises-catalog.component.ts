@@ -10,6 +10,7 @@ import {ExercisesService} from '../../services/exercises-service/exercises.servi
 })
 export class MyExercisesCatalogComponent implements OnInit {
   exercises: Array<object>;
+  muscleGroup;
 
   constructor(private exerciseService: ExercisesService,
               private router: Router,
@@ -28,11 +29,11 @@ export class MyExercisesCatalogComponent implements OnInit {
 
   }
 
-  onMuscleChanged(muscleGroup) {
+  onMuscleChanged() {
     this.exerciseService.getAllExercises().subscribe(data => {
         data = data.sort((a, b) => a._kmd.lmt <= b._kmd.lmt).filter(e => e.creatorName === localStorage.getItem('username'));
-        if (muscleGroup !== '') {
-          this.exercises = data.filter((m) => m.muscleGroup === muscleGroup);
+        if (this.muscleGroup !== 'All') {
+          this.exercises = data.filter((m) => m.muscleGroup === this.muscleGroup);
         }
       },
       err => {
@@ -44,7 +45,9 @@ export class MyExercisesCatalogComponent implements OnInit {
   search(query) {
     const value = query['searched'];
     this.exerciseService.getAllExercises().subscribe(data => {
-        data = data.sort((a, b) => a._kmd.lmt <= b._kmd.lmt).filter(e => e.creatorName === localStorage.getItem('username'));
+        data = data.sort((a, b) => a._kmd.lmt <= b._kmd.lmt)
+          .filter(e => e.muscleGroup === this.muscleGroup)
+          .filter(e => e.creatorName === localStorage.getItem('username'));
         console.log('vleznah');
         this.exercises = data.filter((e) => e.name.includes(value));
       },
