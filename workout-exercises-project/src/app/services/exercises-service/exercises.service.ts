@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Router} from '@angular/router';
-import {AuthService} from '../../auth/auth-service/auth.service';
+import {AuthService} from '../auth-service/auth.service';
 import {Observable} from 'rxjs';
 
 const APP_KEY = 'kid_H1YewYR8X';

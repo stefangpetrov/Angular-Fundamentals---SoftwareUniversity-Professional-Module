@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {ToastrService} from 'ngx-toastr';
-import {AuthService} from '../../auth/auth-service/auth.service';
-import {AdminService} from '../admin-service/admin.service';
+import {AuthService} from '../../services/auth-service/auth.service';
+import {AdminService} from '../../services/admin-service/admin.service';
 
 @Component({
   selector: 'app-admin-panel',

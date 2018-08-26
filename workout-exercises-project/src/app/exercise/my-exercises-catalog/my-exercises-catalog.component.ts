@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {ToastrService} from 'ngx-toastr';
 import {Router} from '@angular/router';
-import {ExercisesService} from '../exercises-service/exercises.service';
+import {ExercisesService} from '../../services/exercises-service/exercises.service';
 
 @Component({
   selector: 'app-my-exercises-catalog',

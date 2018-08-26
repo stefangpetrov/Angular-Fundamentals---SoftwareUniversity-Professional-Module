@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { Route, RouterModule } from '@angular/router';
 import { LoginComponent} from './auth/login/login.component';
 import {RegisterComponent} from './auth/register/register.component';
-import { AuthGuard } from './auth/auth-guard/auth.guard';
+import { AuthGuard } from './guards/auth-guard/auth.guard';
 /*import { RecipeModule } from './recipe/recipe.module';*/
 import {CatalogComponent} from './exercise/catalog/catalog.component';
 import {AddExerciseComponent} from './exercise/add-exercise/add-exercise.component';
@@ -11,7 +11,7 @@ import {ExerciseDetailsComponent} from './exercise/exercise-details/exercise-det
 import {MyExercisesCatalogComponent} from './exercise/my-exercises-catalog/my-exercises-catalog.component';
 import {NotFoundComponent} from './shared/not-found/not-found.component';
 import {AdminPanelComponent} from './admin/admin-panel/admin-panel.component';
-import {AdminGuard} from './admin/admin-guard/admin.guard';
+import {AdminGuard} from './guards/admin-guard/admin.guard';
 import {AdminUserDeleteComponent} from './admin/admin-user-delete/admin-user-delete.component';
 import {AdminUserEditComponent} from './admin/admin-user-edit/admin-user-edit.component';
 import {AboutComponent} from './shared/about/about.component';
