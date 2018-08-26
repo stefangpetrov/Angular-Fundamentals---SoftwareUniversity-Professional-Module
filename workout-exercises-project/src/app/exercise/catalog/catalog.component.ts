@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {ExercisesService} from '../../services/exercises-service/exercises.service';
+import {ExercisesService} from '../exercises-service/exercises.service';
 import {Router} from '@angular/router';
 import {ToastrService} from 'ngx-toastr';
 

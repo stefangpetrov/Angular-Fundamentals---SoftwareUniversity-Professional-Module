@@ -6,13 +6,13 @@ import { CanActivate,
 } from '@angular/router';
 import {ToastrService} from 'ngx-toastr';
 import { Observable } from 'rxjs';
-import { AuthService } from '../../services/auth-service/auth.service';
+import { AuthService } from '../auth-service/auth.service';
 
 
 @Injectable({
   providedIn: 'root'
 })
-export class AdminGuard implements CanActivate {
+export class AuthGuard implements CanActivate {
   constructor(
     private authService: AuthService,
     private router: Router,
@@ -27,11 +27,12 @@ export class AdminGuard implements CanActivate {
   }
 
   check(): boolean {
-    if (this.authService.isAdmin()) {
+    if (this.authService.isAuthenticated()) {
       return true;
     }
-    this.router.navigate(['/exercises/catalog']);
-    this.toastr.error('You need to be an admin in order to reach this page');
+
+    this.toastr.error('You need to be authenticated in order to reach this page');
+    this.router.navigate(['/login']);
     return false;
   }
 }

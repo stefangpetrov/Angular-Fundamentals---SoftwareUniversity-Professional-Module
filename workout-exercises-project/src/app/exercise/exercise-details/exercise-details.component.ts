@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
-import {ExercisesService} from '../../services/exercises-service/exercises.service';
+import {ExercisesService} from '../exercises-service/exercises.service';
 import {ToastrService} from 'ngx-toastr';
-import {AuthService} from '../../services/auth-service/auth.service';
+import {AuthService} from '../../auth/auth-service/auth.service';
 
 @Component({
   selector: 'app-exercise-details',
