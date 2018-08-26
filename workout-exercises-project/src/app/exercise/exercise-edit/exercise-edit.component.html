@@ -1,0 +1,75 @@
+<div class="row" *ngIf="exercise">
+  <div class="col-xs-12">
+    <h1 class="headingg">Edit the exercise</h1>
+    <form class="editForm" #f="ngForm" (ngSubmit)="edit()">
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="form-group">
+            <label for="name">Name</label>
+            <input
+              required
+              type="text"
+              id="name"
+              name="name"
+              [(ngModel)]="exercise.name"
+              class="form-control">
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="form-group">
+            <label for="muscleGroup">Muscle Group</label>
+            <select
+              required
+              type="text"
+              id="muscleGroup"
+              name="muscleGroup"
+              [(ngModel)]="exercise.muscleGroup"
+              class="form-control">
+              <option value="Chest">Chest</option>
+              <option value="Back">Back</option>
+              <option value="Legs">Legs</option>
+              <option value="Shoulders">Shoulders</option>
+              <option value="Arms">Arms</option>
+            </select>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="form-group">
+            <label for="imagePath">Image URL</label>
+            <input
+              required
+              type="text"
+              id="imagePath"
+              name="imagePath"
+              [(ngModel)]="exercise.imageUrl"
+              class="form-control">
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12">
+          <img src="{{exercise.imageUrl}}" class="img-responsive">
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="form-group">
+            <textarea
+              required
+              type="text"
+              id="description"
+              class="form-control"
+              name="description"
+              [(ngModel)]="exercise.description"
+              rows="6"></textarea>
+          </div>
+        </div>
+      </div>
+      <button class="btn btn-warning" [disabled]="f.invalid" type="submit">Edit</button>
+    </form>
+  </div>
+</div>

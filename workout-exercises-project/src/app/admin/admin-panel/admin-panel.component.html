@@ -1,0 +1,42 @@
+<hr>
+<div class="container bootstrap snippet">
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="main-box no-header clearfix">
+        <div class="main-box-body clearfix">
+          <div class="table-responsive">
+            <table class="table user-list">
+              <thead>
+              <tr>
+                <th><span style="margin-left: 55px">Username</span></th>
+                <th><span>Created On</span></th>
+                <th class="text-center"><span>Role</span></th>
+                <th><span>Email</span></th>
+                <th>&nbsp;</th>
+              </tr>
+              </thead>
+              <tbody *ngFor="let user of users">
+              <tr>
+                <td>
+                  <span class="user-link">{{user.username}}</span>
+                </td>
+                <td>{{user._kmd.ect.substring(0, 10)}}</td>
+                <td class="text-center">
+                  <span class="label label-danger">{{user.role}}</span>
+                </td>
+                <td>
+                  <a>{{user.email}}</a>
+                </td>
+                <td>
+                  <button type="button" class="btn btn-warning" routerLink="/admin/userEdit/{{user._id}}">Edit User</button>
+                  <button type="button" class="btn btn-danger" routerLink="/admin/userDelete/{{user._id}}">Delete User</button>
+                </td>
+              </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -4,40 +4,21 @@ import { ToastrModule } from 'ngx-toastr';
 import { HttpClientModule} from '@angular/common/http';
 import { FormsModule} from '@angular/forms';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {AuthModule} from './auth/auth.module';
+import {ExerciseModule} from './exercise/exercise.module';
+import {SharedModule} from './shared/shared.module';
+import {AdminModule} from './admin/admin.module';
+import {AppRoutingModule} from './app-routing.module';
 
 import { AppComponent } from './app.component';
-import { NavigationComponent } from './components/navigation/navigation.component';
-import { LoginComponent } from './components/login/login.component';
-import { RegisterComponent } from './components/register/register.component';
-import {AppRoutingModule} from './app-routing.module';
-import { CatalogComponent } from './components/catalog/catalog.component';
-import { AddExerciseComponent } from './components/add-exercise/add-exercise.component';
-import { ExerciseDetailsComponent } from './components/exercise-details/exercise-details.component';
-import { ExerciseEditComponent } from './components/exercise-edit/exercise-edit.component';
-import { MyExercisesCatalogComponent } from './components/my-exercises-catalog/my-exercises-catalog.component';
-import { NotFoundComponent } from './components/not-found/not-found.component';
-import { AdminPanelComponent } from './components/admin-panel/admin-panel.component';
-import { AdminUserEditComponent } from './components/admin-user-edit/admin-user-edit.component';
-import { AdminUserDeleteComponent } from './components/admin-user-delete/admin-user-delete.component';
-import { AboutComponent } from './components/about/about.component';
+import {NavigationComponent} from './navigation/navigation.component';
+
 
 
 @NgModule({
   declarations: [
     AppComponent,
     NavigationComponent,
-    LoginComponent,
-    RegisterComponent,
-    CatalogComponent,
-    AddExerciseComponent,
-    ExerciseDetailsComponent,
-    ExerciseEditComponent,
-    MyExercisesCatalogComponent,
-    NotFoundComponent,
-    AdminPanelComponent,
-    AdminUserEditComponent,
-    AdminUserDeleteComponent,
-    AboutComponent,
   ],
   imports: [
     BrowserModule,
@@ -45,7 +26,11 @@ import { AboutComponent } from './components/about/about.component';
     ToastrModule.forRoot(),
     HttpClientModule,
     AppRoutingModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    AuthModule,
+    ExerciseModule,
+    SharedModule,
+    AdminModule
   ],
   providers: [],
   bootstrap: [AppComponent]

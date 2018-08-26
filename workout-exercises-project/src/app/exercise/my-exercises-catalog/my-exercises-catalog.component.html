@@ -1,0 +1,48 @@
+<hr>
+<form class="form-inline my-2 my-lg-0">
+  <form #form="ngForm" (ngSubmit)="search(form.value)">
+    <input class="form-control mr-sm-2" name="searched" placeholder="Search" type="text" ngModel>
+    <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
+  </form>
+
+  <div class="form-group">
+    <select class="custom-select"
+            id="muscleGroup"
+            name="muscleGroup"
+            [(ngModel)]="muscleGroup" (change)="onMuscleChanged()">
+      <option selected="">Choose a muscle group</option>
+      <option value="Chest" >Chest</option>
+      <option value="Back" >Back</option>
+      <option value="Legs" >Legs</option>
+      <option value="Shoulders" >Shoulders</option>
+      <option value="Arms" >Arms</option>
+      <option value="All" >All</option>
+    </select>
+  </div>
+  <div class="form-group">
+    <button type="button" class="btn btn-primary" routerLink="/exercises/add">Create an exercise</button>
+  </div>
+</form>
+
+<hr>
+<div class="row">
+  <div *ngFor="let exercise of exercises" class="col-xs-12">
+    <a
+      routerLink="/exercises/details/{{exercise._id}}"
+      style="cursor: pointer;"
+      class="list-group-item clearfix">
+      <div class="pull-left">
+        <h4 class="list-group-item-heading">{{exercise.name}}</h4>
+        <p class="list-group-item-text">Shared by: {{exercise.creatorName}}</p>
+      </div>
+      <span class="pull-right">
+            <img
+              src="{{exercise.imageUrl}}"
+              alt="image"
+              class="img-responsive"
+              style="max-height: 50px;">
+       </span>
+    </a>
+  </div>
+</div>
+
