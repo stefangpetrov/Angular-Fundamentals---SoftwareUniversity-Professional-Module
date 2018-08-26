@@ -31,9 +31,10 @@ export class MyExercisesCatalogComponent implements OnInit {
 
   onMuscleChanged() {
     this.exerciseService.getAllExercises().subscribe(data => {
-        data = data.sort((a, b) => a._kmd.lmt <= b._kmd.lmt).filter(e => e.creatorName === localStorage.getItem('username'));
+        this.exercises = data.sort((a, b) => a._kmd.lmt <= b._kmd.lmt).filter(e => e.creatorName === localStorage.getItem('username'));
         if (this.muscleGroup !== 'All') {
-          this.exercises = data.filter((m) => m.muscleGroup === this.muscleGroup);
+          // @ts-ignore
+          this.exercises = this.exercises.filter((m) => m.muscleGroup === this.muscleGroup);
         }
       },
       err => {
@@ -43,17 +44,23 @@ export class MyExercisesCatalogComponent implements OnInit {
   }
 
   search(query) {
-    const value = query['searched'];
+    const value = query['searched'].toLowerCase();
     this.exerciseService.getAllExercises().subscribe(data => {
-        data = data.sort((a, b) => a._kmd.lmt <= b._kmd.lmt)
-          .filter(e => e.muscleGroup === this.muscleGroup)
-          .filter(e => e.creatorName === localStorage.getItem('username'));
-        console.log('vleznah');
-        this.exercises = data.filter((e) => e.name.includes(value));
+        if (this.muscleGroup === 'All' || this.muscleGroup === undefined) {
+          this.exercises = data.sort((a, b) => a._kmd.lmt <= b._kmd.lmt)
+            .filter((e) => e.name.toLowerCase().includes(value));
+        } else {
+          this.exercises = data.sort((a, b) => a._kmd.lmt <= b._kmd.lmt)
+            .filter(e => e.muscleGroup === this.muscleGroup)
+            .filter((e) => e.name.includes(value));
+        }
+        // @ts-ignore
+        this.exercises = this.exercises.filter((e) => e.creatorName === localStorage.getItem('username'));
       },
       err => {
 
         this.toastr.error((err.error.description ? err.error.description : 'Unknown error occured. Please try again'));
       });
+
   }
 }

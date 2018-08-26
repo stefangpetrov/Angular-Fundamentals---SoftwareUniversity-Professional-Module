@@ -48,11 +48,12 @@ export class CatalogComponent implements OnInit {
   }
 
   search(query) {
-    const value = query['searched'];
+    const value = query['searched'].toLowerCase();
     this.exerciseService.getAllExercises().subscribe(data => {
-
-        if (this.muscleGroup === 'All') {
-          this.exercises = data.sort((a, b) => a._kmd.lmt <= b._kmd.lmt).filter((e) => e.name.includes(value));
+        console.log(this.muscleGroup)
+        if (this.muscleGroup === 'All' || this.muscleGroup === undefined) {
+          this.exercises = data.sort((a, b) => a._kmd.lmt <= b._kmd.lmt)
+            .filter((e) => e.name.toLowerCase().includes(value));
         } else {
           this.exercises = data.sort((a, b) => a._kmd.lmt <= b._kmd.lmt)
             .filter(e => e.muscleGroup === this.muscleGroup)
